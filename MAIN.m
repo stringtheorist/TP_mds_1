@@ -11,7 +11,7 @@ clear;close all;clc;
 % Domaine spatial
 [ds,s,Ns]=DomaineSpatial(Lamb,L);
 % Domaine temporel
-[dt,t,Nt,tmax]=DomaineTemporel(Per,L);
+[dt,t,Nt,tmax]=DomaineTemporel(Per);
 % Rq : dans une phase de bebeugage, il faut que [Nt,Ns,Nw] aient des valeurs 
 % raisonnables (<=1000) et si possible distinctes.
 disp(['[Nt,Ns,Nw]=[' num2str([Nt,Ns,Nw]) ']'])
