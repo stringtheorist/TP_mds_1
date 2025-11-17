@@ -1,25 +1,35 @@
 function Illustration(Type,u,s,t)
-% 
-% %=> visualisation de quelques modes propres
-% figure(1);
-% plot(s,Y([1:3 nmax],:),'LineWidth',2)
-% xlabel('s [m]')
-% legend('n=1','n=2','n=3','n=nmax')
-% set(gca,'FontSize',24)
-% 
-% % Amplitude modale
-% 
-% %=> visualisation des amplitudes modales an
-% figure(2);
-% stem(wn,abs(an),'LineWidth',2)
-% xlabel('wn [rad/s]')
-% ylabel('|an| [m]')
-% set(gca,'FontSize',24)
-% 
-% % Fonction en temps
-% %=> visualisation de T(t) pour quelques modes
-% figure(3);
-% plot(t,T([1:3 nmax],:),'LineWidth',2)
-% xlabel('t [s]')
-% legend('n=1','n=2','n=3','n=nmax')
-% set(gca,'FontSize',24)
+%u=Y'*T;    % u_ij, avec i=>s et j=>t
+
+%-> visualisation de u(s,t) a divers instants
+if (Type == 1) 
+    figure(4);subplot(1,2,1)
+    plot(s,u(:,[1 10 20]),'LineWidth',2);
+    xlabel('s [m]');ylabel('u(s,t) [m]');
+    legend(['t=' num2str(t(1)) ],['t=' num2str(t(10)) ],['t=' num2str(t(20)) ])
+    axis equal
+    set(gca,'FontSize',24)
+
+%-> visualisation de u(s,t) en divers point de la corde
+elseif (Type==2) 
+    figure(4);subplot(1,2,2)
+    plot(t,u([1 10 20],:),'LineWidth',2);
+    xlabel('t [m]');ylabel('u(s,t) [m]');
+    legend(['s=' num2str(s(1)) ],['s=' num2str(s(10)) ],['s=' num2str(s(20)) ])
+    set(gca,'FontSize',24)
+
+%-> visualisation de u(s,t) au cours du temps
+elseif (Type==3)
+    figure(5);
+    for j=1:Nt 
+        plot(s,u(:,j),'k','LineWidth',2);hold on
+        plot(s([1 10 20]),u([1 10 20],j),'o','MarkerSize',8,'LineWidth',2)
+        hold off
+        xlabel('s [m]');ylabel('u(s,t) [m]');
+        axis equal;axis([0,L,-H,H])
+        set(gca,'FontSize',24);
+        pause(0.1)
+    end
+
+
+end
