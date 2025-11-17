@@ -17,6 +17,7 @@ Def=N0/(E*A);   % Deformation [~]
 H=L/5;          % Hauteur [m]
 el=L/4;         % poistion [m]
 % Domaine modal
+%[n,kn,wn,Lamb,Per,Per,Freq]=DomaineModal(Nw,L,C)
 nmax=10;        % Nombre maximal de mode considere      
 n=(1:nmax)';    % Indices modaux
 Nw=nmax;
