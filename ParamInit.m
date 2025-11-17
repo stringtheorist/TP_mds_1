@@ -11,6 +11,6 @@ L=1;            % Longueur [m]
 
     el=L/4;         % position [m]
     % Domaine modal
-    Nw=nmax;
+    Nw=10;  %Nw=nmax
     Aff = 1 ;
        
