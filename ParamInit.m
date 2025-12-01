@@ -1,8 +1,8 @@
-function [L,R,E,ro,Note,H,el,Nw,Aff]=ParamInit
+function [L,R,ro,Note,H,el,Nw,Aff]=ParamInit
 L=1;            % Longueur [m]
     R=0.001;        % Rayon [m]
     % Materiau : acier
-    E=210e9;        % Module de Young [Pa]
+    %E=210e9;        % Module de Young [Pa]
     ro=7800;        % Masse volumique [kg/m^3]
     % Tension : corde accordee sur le la-440
     Note=440;       % Frequence fondamentale [Hz]

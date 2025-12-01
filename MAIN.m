@@ -4,11 +4,11 @@ clear;close all;clc;
 nmax=10;
 %% ========================================================================
 % Chargement des parametres
-[L,R,E,ro,Note,H,el,Nw,Aff]=ParamInit;
+[L,R,ro,Note,H,el,Nw,Aff]=ParamInit;
 % Parametres intermediaires
-[A,C,N0,Def]=ParamInter(R,L,ro,E,Note);
+[A,C,N0]=ParamInter(R,L,ro,Note);
 % Domaine modal
-[n,kn,wn,Lamb,Per,Freq]=DomaineModal(Nw,L,C);
+[n,kn,wn,Lamb,Per]=DomaineModal(Nw,L,C);
 % Domaine spatial
 [ds,s,Ns]=DomaineSpatial(Lamb,L);
 % Domaine temporel
