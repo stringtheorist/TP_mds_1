@@ -1,6 +1,7 @@
 function Illustration(Type,u,s,t,Nt,L,H)
 %u=Y'*T;    % u_ij, avec i=>s et j=>t
 %-> visualisation de u(s,t) a divers instants
+
 if (Type == 1) 
     figure(1);subplot(1,2,1)
     plot(s,u(:,[1 10 20]),'LineWidth',2);
