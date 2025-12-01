@@ -7,7 +7,7 @@ bn=zeros(size(n));
 
 
 %=> visualisation des amplitudes modales an
-figure(2);
+figure(4);
 stem(wn,abs(an),'LineWidth',2)
 xlabel('wn [rad/s]')
 ylabel('|an| [m]')
