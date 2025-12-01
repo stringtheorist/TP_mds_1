@@ -1,4 +1,4 @@
-function [dt,t,Nt,tmax]=DomaineTemporel(Per)
+function [t,Nt]=DomaineTemporel(Per)
 dt=min(Per)/20; % Pas en temps [s]
 tmax=max(Per)*2;% Temps maximum de la simulation [s]
 t=0:dt:tmax;    % Echantillonage temporel [s]

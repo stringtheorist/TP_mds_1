@@ -12,7 +12,7 @@ nmax=10;
 % Domaine spatial
 [ds,s,Ns]=DomaineSpatial(Lamb,L);
 % Domaine temporel
-[dt,t,Nt,tmax]=DomaineTemporel(Per);
+[t,Nt]=DomaineTemporel(Per);
 % Rq : dans une phase de bebeugage, il faut que [Nt,Ns,Nw] aient des valeurs 
 % raisonnables (<=1000) et si possible distinctes.
 disp(['[Nt,Ns,Nw]=[' num2str([Nt,Ns,Nw]) ']'])
@@ -22,7 +22,7 @@ disp(['[Nt,Ns,Nw]=[' num2str([Nt,Ns,Nw]) ']'])
 % Modes propres
 Y=ModePropre(kn,s,Nw,Aff);
 % Amplitude modale
-[an,bn]=AmplitudeModale(L,el,kn,wn,n,H);
+[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff);
 % Fonction en temps
 T=FctTemporelle(Nw,wn,an,bn,t,Aff);
 % Deplacement
@@ -30,9 +30,9 @@ u=FctDeplacement(Y,T);
 
 %% ========================================================================
 %% VALORISATION ==========================================================
-Type=1;Illustration(Type,u,s,t,Nt,L,H)
-Type=2;Illustration(Type,u,s,t,Nt,L,H)
-Type=3;Illustration(Type,u,s,t,Nt,L,H)
+% Type=1;Illustration(Type,u,s,t,Nt,L,H)
+% Type=2;Illustration(Type,u,s,t,Nt,L,H)
+% Type=3;Illustration(Type,u,s,t,Nt,L,H)
 %Film(u,s,Nt,L,H)
 
 

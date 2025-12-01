@@ -12,5 +12,5 @@ L=1;            % Longueur [m]
     el=L/4;         % position [m]
     % Domaine modal
     Nw=10;  %Nw=nmax
-    Aff = 1 ;
+    Aff = 1 ; %Aff=1 pour afficher les amplitudes modales et Aff=0 pour ne pas afficher
        
