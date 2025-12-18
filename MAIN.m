@@ -4,7 +4,7 @@ clear;close all;clc;
 nmax=10;
 %% ========================================================================
 % Chargement des parametres
-[L,R,ro,Note,H,el,Nw,Aff]=ParamInit;
+[L,R,ro,Note,H,el,Nw,Aff,Corde]=ParamInit;
 % Parametres intermediaires
 [A,C,N0]=ParamInter(R,L,ro,Note);
 % Domaine modal
@@ -31,48 +31,46 @@ n=(1:nmax)';    % Indices modaux
 
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
-% Modes propres
-Y=ModePropre(kn,s,Nw,Aff);
-% Amplitude modale
-[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff);
-% Fonction en temps
-T=FctTemporelle(Nw,wn,an,bn,t,Aff);
-% Deplacement
-u=FctDeplacement(Y,T);
+if Corde=='OUI'
+
+    % Modes propres
+    Y=ModePropre(kn,s,Nw,Aff);
+    % Amplitude modale
+    [an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff);
+    % Fonction en temps
+    T=FctTemporelle(Nw,wn,an,bn,t,Aff);
+    % Deplacement
+    u=FctDeplacement(Y,T);
 
 %% ========================================================================
 %% VALORISATION ==========================================================
-% Type=1;Illustration(Type,u,s,t,Nt,L,H)
-% Type=2;Illustration(Type,u,s,t,Nt,L,H)
-% Type=3;Illustration(Type,u,s,t,Nt,L,H)
-%Film(u,s,Nt,L,H)
+    Type=1;Illustration(Type,u,s,t,Nt,L,H)
+    Type=2;Illustration(Type,u,s,t,Nt,L,H)
+    Type=3;Illustration(Type,u,s,t,Nt,L,H)
+    Film(u,s,Nt,L,H)
 
 
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
-% Modes propres
-for in=1:nmax
+elseif Corde=='NON'
+    % Modes propres
+    for in=1:nmax
     % Y_ij, avec i=>n et j=>s
-Y(in,:)=cos(kn(in).*s)+K/N0*sin(kn(in).*s)./kn(in);    % Y_ij, avec i=>n et j=>s
-% Norme au carré de chaque mode (obtenu via calcul formel) 
-normY2(in,:)=(2*(K^2.*kn(in)*L+K*N0+kn(in)*L*N0^2)-2*K*N0*cos(2*kn(in)*L)+(N0^2-K^2).*sin(2*kn(in)*L))./(4*kn(in)*N0^2);
+    Y(in,:)=cos(kn(in).*s)+K/N0*sin(kn(in).*s)./kn(in);    % Y_ij, avec i=>n et j=>s
+    end
+    %-> visualisation de quelques modes propres
+    figure(5);
+    plot(s,Y([1:3 nmax],:),'LineWidth',2)
+    xlabel('s [m]')
+    legend('n=1','n=2','n=3','n=nmax')
+    set(gca,'FontSize',24)
+    % Amplitude modale
+    [an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff);
+    % Fonction en temps
+    T=FctTemporelle(Nw,wn,an,bn,t,Aff);
+    % Deplacement
+    u=FctDeplacement(Y,T);
+
+    Type=3;Illustration(Type,u,s,t,Nt,L,H)
 end
-%-> visualisation de quelques modes propres
-figure(5);
-plot(s,Y([1:3 nmax],:),'LineWidth',2)
-xlabel('s [m]')
-legend('n=1','n=2','n=3','n=nmax')
-set(gca,'FontSize',24)
-% Amplitude modale
-[an,bn]=AmplitudeModale(L,el,kn,wn,n,H,Aff);
-% Fonction en temps
-T=FctTemporelle(Nw,wn,an,bn,t,Aff);
-% Deplacement
-u=FctDeplacement(Y,T);
 
-Type=3;Illustration(Type,u,s,t,Nt,L,H)
-
-% D'autres valorisations peuvent etre envisagees, quelques propostion
-% Film ?
-% Son ?
-% Autre ?

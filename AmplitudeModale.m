@@ -6,7 +6,7 @@ bn=zeros(size(n));
 
 
 %=> visualisation des amplitudes modales an
-if Aff>0
+if Aff==1
     figure(4);
     stem(wn,abs(an),'LineWidth',2)
     xlabel('wn [rad/s]')
