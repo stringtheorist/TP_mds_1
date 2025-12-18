@@ -4,7 +4,7 @@ clear;close all;clc;
 nmax=10;
 %% ========================================================================
 % Chargement des parametres
-[L,R,ro,Note,H,el,Nw,Aff,Corde]=ParamInit;
+[L,R,ro,Note,H,el,Nw,Aff,Ressort]=ParamInit;
 % Parametres intermediaires
 [A,C,N0]=ParamInter(R,L,ro,Note);
 % Domaine modal
@@ -31,7 +31,7 @@ n=(1:nmax)';    % Indices modaux
 
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
-if Corde=='OUI'
+if Ressort=='NON'
 
     % Modes propres
     Y=ModePropre(kn,s,Nw,Aff);
@@ -52,7 +52,7 @@ if Corde=='OUI'
 
 %% ========================================================================
 %% ANALYSE MODALE =========================================================
-elseif Corde=='NON'
+elseif Ressort=='OUI'
     % Modes propres
     for in=1:nmax
     % Y_ij, avec i=>n et j=>s

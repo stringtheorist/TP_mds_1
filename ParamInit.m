@@ -1,4 +1,4 @@
-function [L,R,ro,Note,H,el,Nw,Aff,Corde]=ParamInit
+function [L,R,ro,Note,H,el,Nw,Aff,Ressort]=ParamInit
 L=1;            % Longueur [m]
     R=0.001;        % Rayon [m]
     % Materiau : acier
@@ -13,5 +13,5 @@ L=1;            % Longueur [m]
     % Domaine modal
     Nw=10;  %Nw=nmax
     Aff = 1 ; %Aff=1 pour afficher les amplitudes modales et Aff=0 pour ne pas afficher
-    Corde='NON';
+    Ressort='NON';
        
